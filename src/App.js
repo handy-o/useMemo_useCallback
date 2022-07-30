@@ -11,6 +11,7 @@ function App() {
 	console.log('parent');
 	const [Counter, setCounter] = useState(0); //원시형
 	const [Input, setInput] = useState('');
+	const updateCounter = () => setCounter(Counter + 1);
 
 	// 자식 컴포넌트에 영향을 미치치 않는 부모컴포넌트에만 있는 state값이 변경돼서 재랜더링시
 	// memo로 감싸져 있는 자식 컴포넌트는 불필요하게 재런더링 되지 않음
@@ -28,7 +29,7 @@ function App() {
 
 			{/* 자식컴포넌트에 prop으로 전달되는 값이 원시형자료면 재랜더링방지 가능 */}
 			{/* 만약, 참조형자료가 전달되면 재랜더링 방지 안됨*/}
-			<Child Counter={Counter} arr={arr} />
+			<Child Counter={Counter} arr={arr} updateCunter={updateCounter} />
 			{/*  참조형 배열인 arr을 참조하면 child까지 재랜더링이 일어남 */}
 		</div>
 	);
