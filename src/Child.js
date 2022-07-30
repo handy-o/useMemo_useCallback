@@ -1,6 +1,6 @@
 //hoc (high order component) : 함수안에 인수로 컴포넌트 함수를 넣어서 다시 새로운 컴포넌트를 반환
 import { memo } from 'react';
-
+import { isEqual } from 'lodash'; //참조형 자료 값 비교
 /* 
   memo : 특정 컴포넌트를 memoryzation해서 (메모리할당) 
   부모 컴포넌트의 state값이 변경되서 재랜더링될 때 자식컴포넌트도 같이 재랜더링되는 것이 아닌,
@@ -21,4 +21,4 @@ function Child(props) {
 	);
 }
 
-export default memo(Child);
+export default memo(Child, isEqual);
