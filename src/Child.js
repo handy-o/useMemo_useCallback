@@ -13,10 +13,21 @@ import { isEqual } from 'lodash'; //참조형 자료 값 비교
 //const Child = (props) => {
 function Child(props) {
 	console.log('child');
+
+	// 무거운 작업을 실행시켜보겠습니다.
+	const heavyWork = () => {
+		let num = 0;
+		for (let i = 0; i < 50000000; i++) {
+			num++;
+		}
+		return num;
+	};
+
 	const { Counter, updateCounter } = props;
 	return (
 		<div>
 			<h1>Child-{Counter}</h1>
+			<h2>{heavyWork()}</h2>
 			<button onClick={updateCounter}>update</button>
 		</div>
 	);
