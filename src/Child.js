@@ -1,5 +1,5 @@
 //hoc (high order component) : 함수안에 인수로 컴포넌트 함수를 넣어서 다시 새로운 컴포넌트를 반환
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { isEqual } from 'lodash'; //참조형 자료 값 비교
 /* 
   memo : 특정 컴포넌트를 memoryzation해서 (메모리할당) 
@@ -20,7 +20,7 @@ function Child(props) {
 	// 이때 의존성 배열을 등록하면 그 상황에서만 재 연산 처리
 	const heavyWork = useMemo(() => {
 		let num = 0;
-		for (let i = 0; i < 50000000; i++) {
+		for (let i = 0; i < 800000000; i++) {
 			num++;
 		}
 		return num;
@@ -30,7 +30,7 @@ function Child(props) {
 	return (
 		<div>
 			<h1>Child-{Counter}</h1>
-			<h2>{heavyWork()}</h2>
+			<h2>{heavyWork}</h2>
 			<button onClick={updateCounter}>update</button>
 		</div>
 	);
