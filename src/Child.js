@@ -13,10 +13,11 @@ import { isEqual } from 'lodash'; //참조형 자료 값 비교
 //const Child = (props) => {
 function Child(props) {
 	console.log('child');
-	const { Counter } = props;
+	const { Counter, updateCounter } = props;
 	return (
 		<div>
 			<h1>Child-{Counter}</h1>
+			<button onClick={updateCounter}>update</button>
 		</div>
 	);
 }
