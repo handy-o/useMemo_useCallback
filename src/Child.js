@@ -15,13 +15,16 @@ function Child(props) {
 	console.log('child');
 
 	// 무거운 작업을 실행시켜보겠습니다.
-	const heavyWork = () => {
+	// 내부적으로 매번 같은 값을 반환하는 연산을 처리할 때 계속해서 재연산하는 것은 비효율적
+	// 특정 값을 반환하는 구문자체를 메모이제이션처리,
+	// 이때 의존성 배열을 등록하면 그 상황에서만 재 연산 처리
+	const heavyWork = useMemo(() => {
 		let num = 0;
 		for (let i = 0; i < 50000000; i++) {
 			num++;
 		}
 		return num;
-	};
+	}, []);
 
 	const { Counter, updateCounter } = props;
 	return (
